@@ -31,8 +31,8 @@
                 "output": "./svg"
               }
             ],
-            "styles": ["src/theme/variables.scss", "src/global.scss"],
-            "scripts": [],
+            "styles": ["./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css", "src/theme/variables.scss", "src/global.scss"],
+            "scripts": ["node_modules/apexcharts/dist/apexcharts.min.js"],
             "aot": false,
             "vendorChunk": true,
             "extractLicenses": false,
@@ -97,7 +97,7 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
-            "styles": [],
+            "styles": [ "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css"],
             "scripts": [],
             "assets": [
               {

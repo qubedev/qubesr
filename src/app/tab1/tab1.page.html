@@ -1,17 +1,115 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
+
+<ion-content [fullscreen]="true" style="--background: linear-gradient( 65.9deg,  rgb(231, 255, 254) 5.5%, rgb(237, 237, 255) 54.2%, rgb(236, 250, 255) 55.2%, rgb(251, 240, 255) 98.4% );">
+ 
+  <ion-header class="ion-no-border">
+    <ion-toolbar style="--background:transparent;padding:15px">
+      <ion-title style="font-size: 20px;"> 
+        Sales Report
+      </ion-title>
+      <div slot="end">
+        <mat-date-range-input [rangePicker]="picker" [hidden]="true">
+        <input matStartDate placeholder="Start date">
+        <input matEndDate placeholder="End date">
+      </mat-date-range-input>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-date-range-picker #picker></mat-date-range-picker>
+    </div>
+  
     </ion-toolbar>
   </ion-header>
+   <ion-card style="max-height: 80px;">
+    <ion-label>
+      <p>TOTOL SALES</p>
+      <h1 style="color:black;font-weight:bold">RM 999,999,999</h1>
+    </ion-label>
+    <ion-badge style="position:absolute;right:10px;bottom:10px;background: green;">
+      <ion-icon name="caret-up-outline"></ion-icon>
+      <ion-label>5%</ion-label>
+    </ion-badge>
+  </ion-card>
+  <ion-card style="max-height: 80px;">
+    <ion-label>
+      <p>TOTAL TRANSACTION</p>
+      <h1 style="color:black;font-weight:bold">999,999,999</h1>
+    </ion-label>
+    <ion-badge style="position:absolute;right:10px;bottom:10px;background: red;">
+      <ion-icon name="caret-down-outline"></ion-icon>
+      <ion-label>-5%</ion-label>
+    </ion-badge>
+  </ion-card>
+<ion-card style="max-height: 250px;--border-radius: 5px;padding: 0px;">
+  <div id="chart">
+    <apx-chart
+      [series]="chartOptions.series"
+      [chart]="chartOptions.chart"
+      [xaxis]="chartOptions.xaxis"
+      [stroke]="chartOptions.stroke"
+      [tooltip]="chartOptions.tooltip"
+      [dataLabels]="chartOptions.dataLabels"
+    ></apx-chart>
+  </div>
+</ion-card>
+<ion-grid>
+  <ion-row >
+    <ion-col size="6">
+      <ion-card style="background-image: linear-gradient( 135deg, #81FBB8 10%, #28C76F 100%);">
+        <ion-label>
+          <p style="font-size:0.7rem;margin: 0px;">Daily Top Outlet</p>
+          <h1 style="font-size: 1.3rem;margin: 0px;color:black">RM 999,999.00</h1>
+          <ion-note style="color:black">
+            AAA Outlet
+          </ion-note>
+        </ion-label>
+      </ion-card>
+    </ion-col>
+    <ion-col size="6">
+      <ion-card style="background-image: linear-gradient( 135deg, #FEC163 10%, #DE4313 100%);">
+        <ion-label>
+          <p style="font-size:0.7rem;margin: 0px;">Daily Top Sku</p>
+          <h1 style="font-size: 1.3rem;margin: 0px;color:black">RM 999,999.00</h1>
+          <ion-note style="color:black">
+            Product 1
+          </ion-note>
+        </ion-label>
+      </ion-card>
+    </ion-col>
+    <ion-col size="6">
+      <ion-card style="background-image: linear-gradient( 135deg, #ABDCFF 10%, #0396FF 100%);">
+        <ion-label>
+          <p style="font-size:0.7rem;margin: 0px;">Daily Top Dept</p>
+          <h1 style="font-size: 1.3rem;margin: 0px;color:black">RM 999,999.00</h1>
+          <ion-note style="color:black">
+            Food
+          </ion-note>
+        </ion-label>
+      </ion-card>
+    </ion-col>
+    <ion-col size="6">
+      <ion-card style="background-image: linear-gradient( 135deg, #E2B0FF 10%, #9F44D3 100%);">
+        <ion-label>
+          <p style="font-size:0.7rem;margin: 0px;">Daily Top Hour</p>
+          <h1 style="font-size: 1.3rem;margin: 0px;color:black">RM 999,999.00</h1>
+          <ion-note style="color:black">
+            12
+          </ion-note>
+        </ion-label>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+ 
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+</ion-grid>
+<ion-card style="max-height: 250px;--border-radius: 5px;padding: 0px;">
+  <div id="chart">
+    <apx-chart
+      [series]="chartOptions.series"
+      [chart]="chartOptions.chart"
+      [xaxis]="chartOptions.xaxis"
+      [stroke]="chartOptions.stroke"
+      [tooltip]="chartOptions.tooltip"
+      [dataLabels]="chartOptions.dataLabels"
+    ></apx-chart>
+  </div>
+</ion-card>
 </ion-content>
