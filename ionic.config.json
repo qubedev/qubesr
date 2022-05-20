@@ -1,0 +1,7 @@
+{
+  "name": "qubelive",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
