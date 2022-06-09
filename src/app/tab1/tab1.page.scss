@@ -1,4 +1,31 @@
 
+.box4{
+    ion-label{
+        p{
+            font-size:0.7rem;
+            margin: 0px;
+            color:white;
+        }
+        h1{
+            font-size: 1.3rem;
+            margin: 0px;
+            font-weight: bold;
+            color:white; 
+        }
+    }
+    ion-note{
+        color:white;
+        min-height: 40px;
+    }
+}
+span {
+    display: inline-block;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+}
+
 #chart {
     max-width: 100%;
     height:250px;
@@ -18,3 +45,4 @@ ion-card{
     border-radius:4px;
     padding: 10px;
 }
+

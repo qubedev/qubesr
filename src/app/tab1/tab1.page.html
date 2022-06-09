@@ -1,115 +1,189 @@
-
-
-<ion-content [fullscreen]="true" style="--background: linear-gradient( 65.9deg,  rgb(231, 255, 254) 5.5%, rgb(237, 237, 255) 54.2%, rgb(236, 250, 255) 55.2%, rgb(251, 240, 255) 98.4% );">
- 
+<ion-content [fullscreen]="true"
+  style="--background: linear-gradient( 65.9deg,  rgb(231, 255, 254) 5.5%, rgb(237, 237, 255) 54.2%, rgb(236, 250, 255) 55.2%, rgb(251, 240, 255) 98.4% );">
+  <ion-popover trigger="open-modal" show-backdrop="false">
+    <ng-template >
+      <ion-datetime 
+         #popoverDate
+         [max]="maxDate"
+         presentation="date"
+         showDefaultButtons=true
+         (ionChange)="datepicker(popoverDate.value)"
+       ></ion-datetime>
+    </ng-template>
+  </ion-popover>    
   <ion-header class="ion-no-border">
     <ion-toolbar style="--background:transparent;padding:15px">
-      <ion-title style="font-size: 20px;"> 
-        Sales Report
-      </ion-title>
       <div slot="end">
-        <mat-date-range-input [rangePicker]="picker" [hidden]="true">
-        <input matStartDate placeholder="Start date">
-        <input matEndDate placeholder="End date">
-      </mat-date-range-input>
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-      <mat-date-range-picker #picker></mat-date-range-picker>
-    </div>
-  
+        <ion-item style="width:100%;--background:transparent" lines="none"  id="open-modal">
+          <ion-label >
+            {{unformatcurrentDate}}
+          </ion-label>
+        
+          <ion-icon size="small" slot="end" name="caret-down-outline"></ion-icon>
+        </ion-item>
+
+      </div>
+      <ion-buttons slot="secondary">
+        <ion-button (click)="showProfile()"> 
+          <ion-icon slot="icon-only" name="menu-outline" style="color: #9d0000;"></ion-icon>
+        </ion-button>
+      </ion-buttons>
     </ion-toolbar>
-  </ion-header>
-   <ion-card style="max-height: 80px;">
+  </ion-header>  
+  <ion-card style="max-height: 80px;margin: 10px;">
     <ion-label>
       <p>TOTOL SALES</p>
-      <h1 style="color:black;font-weight:bold">RM 999,999,999</h1>
+      <h1 style="color:#555;font-weight:bold">MYR {{txt_totalsales}}</h1>
     </ion-label>
-    <ion-badge style="position:absolute;right:10px;bottom:10px;background: green;">
-      <ion-icon name="caret-up-outline"></ion-icon>
-      <ion-label>5%</ion-label>
+    <ion-badge style="position:absolute;right:10px;bottom:10px;"
+      [style.background]="salespercent > 0 ? 'green' : 'red'">
+
+      <ion-label>{{salespercent}}%</ion-label>
+      <ion-icon [name]="salespercent > 0 ? 'caret-up-outline' : 'caret-down-outline'"></ion-icon>
     </ion-badge>
   </ion-card>
-  <ion-card style="max-height: 80px;">
+  <ion-card style="max-height: 80px;margin: 10px;">
     <ion-label>
       <p>TOTAL TRANSACTION</p>
-      <h1 style="color:black;font-weight:bold">999,999,999</h1>
+      <h1 style="color:#555;font-weight:bold">{{txt_totaltrx}}</h1>
     </ion-label>
-    <ion-badge style="position:absolute;right:10px;bottom:10px;background: red;">
-      <ion-icon name="caret-down-outline"></ion-icon>
-      <ion-label>-5%</ion-label>
+    <ion-badge style="position:absolute;right:10px;bottom:10px;" [style.background]="trxpercent > 0 ? 'green' : 'red'">
+
+      <ion-label>{{trxpercent}}%</ion-label>
+      <ion-icon [name]="trxpercent > 0 ? 'caret-up-outline' : 'caret-down-outline'"></ion-icon>
     </ion-badge>
   </ion-card>
-<ion-card style="max-height: 250px;--border-radius: 5px;padding: 0px;">
-  <div id="chart">
-    <apx-chart
-      [series]="chartOptions.series"
-      [chart]="chartOptions.chart"
-      [xaxis]="chartOptions.xaxis"
-      [stroke]="chartOptions.stroke"
-      [tooltip]="chartOptions.tooltip"
-      [dataLabels]="chartOptions.dataLabels"
-    ></apx-chart>
-  </div>
-</ion-card>
-<ion-grid>
-  <ion-row >
-    <ion-col size="6">
-      <ion-card style="background-image: linear-gradient( 135deg, #81FBB8 10%, #28C76F 100%);">
-        <ion-label>
-          <p style="font-size:0.7rem;margin: 0px;">Daily Top Outlet</p>
-          <h1 style="font-size: 1.3rem;margin: 0px;color:black">RM 999,999.00</h1>
-          <ion-note style="color:black">
-            AAA Outlet
-          </ion-note>
-        </ion-label>
-      </ion-card>
-    </ion-col>
-    <ion-col size="6">
-      <ion-card style="background-image: linear-gradient( 135deg, #FEC163 10%, #DE4313 100%);">
-        <ion-label>
-          <p style="font-size:0.7rem;margin: 0px;">Daily Top Sku</p>
-          <h1 style="font-size: 1.3rem;margin: 0px;color:black">RM 999,999.00</h1>
-          <ion-note style="color:black">
-            Product 1
-          </ion-note>
-        </ion-label>
-      </ion-card>
-    </ion-col>
-    <ion-col size="6">
-      <ion-card style="background-image: linear-gradient( 135deg, #ABDCFF 10%, #0396FF 100%);">
-        <ion-label>
-          <p style="font-size:0.7rem;margin: 0px;">Daily Top Dept</p>
-          <h1 style="font-size: 1.3rem;margin: 0px;color:black">RM 999,999.00</h1>
-          <ion-note style="color:black">
-            Food
-          </ion-note>
-        </ion-label>
-      </ion-card>
-    </ion-col>
-    <ion-col size="6">
-      <ion-card style="background-image: linear-gradient( 135deg, #E2B0FF 10%, #9F44D3 100%);">
-        <ion-label>
-          <p style="font-size:0.7rem;margin: 0px;">Daily Top Hour</p>
-          <h1 style="font-size: 1.3rem;margin: 0px;color:black">RM 999,999.00</h1>
-          <ion-note style="color:black">
-            12
-          </ion-note>
-        </ion-label>
-      </ion-card>
-    </ion-col>
-  </ion-row>
- 
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6">
+        <ion-card class="box4" (click)="changeType('OUTLET')" [ngStyle]="currentType == 'OUTLET' ? {border: '2px solid black'} : {border:none} " style="background-image: linear-gradient( 135deg, #ff656a 10%, #bf2025 100%);">
+          <ion-label>
+            <p>Daily Top Outlet</p>
+            <h1>MYR {{txt_topOutlet.Net}}</h1>
+            <div>
+              <ion-note>
+                <span>
+                  {{txt_topOutlet.Desc}}
+                </span>
+          
+              </ion-note>
+            </div>
+          </ion-label>
+        </ion-card>
+      </ion-col>
+      <ion-col size="6">
+        <ion-card class="box4" (click)="changeType('SKU')" [ngStyle]="currentType == 'SKU' ? {border: '2px solid black'} : {border:none} " style="background-image: linear-gradient( 135deg, #ffb648 10%, #DE4313 100%);">
+          <ion-label>
+            <p>Daily Top Sku</p>
+            <h1>MYR {{txt_topSku.Net}}</h1>
+            <div>
+              <ion-note>
+                <span>
+                  {{txt_topSku.Desc}}
+                </span>
+       
+              </ion-note>
+            </div>
+          </ion-label>
+        </ion-card>
+      </ion-col>
+      <ion-col size="6">
+        <ion-card class="box4" (click)="changeType('DEPT')" [ngStyle]="currentType == 'DEPT' ? {border: '2px solid black'} : {border:none} " style="background-image: linear-gradient( 135deg, #75c6ff 10%, #0396FF 100%);">
+          <ion-label>
+            <p>Daily Top Dept</p>
+            <h1>MYR {{txt_topDept.Net}}</h1>
+            <div>
+              <ion-note>
+                <span>
+                  {{txt_topDept.Desc}}
+                </span>
+             
+              </ion-note>
+            </div>
+          </ion-label>
+        </ion-card>
+      </ion-col>
+      <ion-col size="6">
+        <ion-card class="box4" (click)="changeType('HOUR')" [ngStyle]="currentType == 'HOUR' ? {border: '2px solid black'} : {border:none} " style="background-image: linear-gradient( 135deg, #d181ff 10%, #9F44D3 100%);">
+          <ion-label>
+            <p>Daily Top Hour</p>
+            <h1>MYR {{txt_topHour.Net}}</h1>
+            <div>
+              <ion-note>
+                <span>
+                  {{txt_topHour.Code}}
+                </span>
+          
+              </ion-note>
+            </div>
+          </ion-label>
+        </ion-card>
+      </ion-col>
+    </ion-row>
 
-</ion-grid>
-<ion-card style="max-height: 250px;--border-radius: 5px;padding: 0px;">
-  <div id="chart">
-    <apx-chart
-      [series]="chartOptions.series"
-      [chart]="chartOptions.chart"
-      [xaxis]="chartOptions.xaxis"
-      [stroke]="chartOptions.stroke"
-      [tooltip]="chartOptions.tooltip"
-      [dataLabels]="chartOptions.dataLabels"
-    ></apx-chart>
+
+  </ion-grid>
+
+
+
+
+
+  <div style="display: block">
+    
+    <ion-card>
+      <ion-list-header class="ion-no-margin ion-no-padding" style="margin-bottom:5px">Top 10 {{currentType}}</ion-list-header>
+      <ion-segment [(ngModel)]="DateRange" (ionChange)="segmentChanged(DateRange)">
+        <ion-segment-button value="day">
+          <ion-label>Day</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="week">
+          <ion-label>Week</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="month">
+          <ion-label>Month</ion-label>
+        </ion-segment-button>
+      </ion-segment>
+      <!-- <ion-slides *ngIf="DateRange == 'month'" class="ion-padding" [options]="slideOptsTwo" #slides (ionSlideDidChange)="slidechanged($event)">
+        <ion-slide *ngFor="let i of montharr;index as index;" (click)="onClickSlide(index,i)">
+          <div style="border-bottom: #9d0000 solid 5px;">
+            <ion-label>{{i}}</ion-label>
+          </div>
+        </ion-slide>
+      </ion-slides> -->
+
+        <div style="display: block" class="ion-margin">
+          <canvas baseChart [data]="barChartData" [options]="barChartOptions" [plugins]="barChartPlugins"
+            [type]="barChartType" (chartHover)="chartHovered($event)" (chartClick)="chartClicked($event)">
+          </canvas>
+        </div>
+
+  
+        <ion-item *ngFor="let outlet of top10;let i = index">
+          <ion-label>
+            <h1>MYR {{outlet.Net.toFixed(2)}}</h1>
+            <p>{{currentType == 'HOUR' ? outlet.Code : outlet.Desc}}</p>
+          </ion-label>
+          <div style="width:50px" *ngIf="i == 0">
+            <img src="assets/img/1.png">
+          </div>
+          <div style="width:50px" *ngIf="i == 1">
+            <img src="assets/img/2.png">
+          </div>
+          <div style="width:50px" *ngIf="i == 2">
+            <img src="assets/img/3.png">
+          </div>
+        </ion-item>
+    </ion-card>
+
   </div>
-</ion-card>
+
+
 </ion-content>
+
+<ion-footer>
+  <ion-item (click)="selectStore()"
+    style="--background:#bf2025;width: 40%;border-radius:50px;margin: auto;margin-bottom:20px;color: white;">
+    <ion-label>Filter</ion-label>
+    <ion-icon name="filter-outline" slot="end"></ion-icon>
+  </ion-item>
+</ion-footer>

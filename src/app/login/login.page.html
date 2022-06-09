@@ -18,14 +18,14 @@
       <mat-form-field style="width:100%;" appearance="outline">
         <mat-icon matPrefix>email</mat-icon>
         <mat-label>Email / Username</mat-label>
-        <input matInput>
+        <input matInput [(ngModel)]="inputEmail">
       </mat-form-field>
       <mat-form-field style="width:100%;" appearance="outline">
         <mat-icon matPrefix>lock</mat-icon>
         <mat-label>Password</mat-label>
-        <input matInput>
+        <input matInput [(ngModel)]="inputPass">
       </mat-form-field>
-      <button  mat-flat-button style="border-radius: 40px;width:70%;height:50px;margin-top: 100px;background: #bf2025;color: white;font-weight: bold;">Login</button>
+      <button (click)="presentAlert()" mat-flat-button style="border-radius: 40px;width:70%;height:50px;margin-top: 100px;background: #bf2025;color: white;font-weight: bold;">Login</button>
 
     </ion-card-content>
   </ion-card>
