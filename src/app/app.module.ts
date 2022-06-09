@@ -11,14 +11,16 @@ import { NgApexchartsModule } from 'ng-apexcharts';
 import { HttpClientModule } from '@angular/common/http';
 import { Device } from '@awesome-cordova-plugins/device/ngx';
 import { NgChartsModule } from 'ng2-charts';
-
+import { Keyboard } from '@awesome-cordova-plugins/keyboard/ngx';
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot({
-    mode: 'ios'
+    mode: 'ios',
+    scrollAssist: true,
+    scrollPadding: true,
 }), AppRoutingModule, BrowserAnimationsModule,NgApexchartsModule,HttpClientModule,NgChartsModule],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },Device],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy },Device,Keyboard],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

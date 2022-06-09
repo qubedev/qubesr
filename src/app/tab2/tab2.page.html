@@ -3,6 +3,41 @@
   <ion-header  >
     <ion-toolbar>
       <ion-title size="medium">Profile</ion-title>
+      <ion-buttons (click)="modal.dismiss()">Close</ion-buttons>
     </ion-toolbar>
   </ion-header>
+
+  <div style="width: 100px;margin: auto;padding-top: 20px;">
+    <img src="assets/img/profile.png">
+  </div>
+  <ion-card>
+    <ion-list>
+      <ion-item>
+        <ion-label position="stacked">
+          EMAIL :
+        </ion-label>
+        <ion-input>{{inputUser}}</ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">
+          PASSWORD :
+        </ion-label>
+        <ion-input type="password" readonly [value]="inputPass"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">
+          EXPIRE DATE :
+        </ion-label>
+        <ion-input>{{inputExpireDate}}</ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">
+          APP VERSION :
+        </ion-label>
+        <ion-input>{{inputAppVer}}</ion-input>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+  <ion-button size="default" color="tertiary" expand="block" type="submit" margin="10px" (click)="changePass()">CHANGE PASSWORD</ion-button>
+  <ion-button size="default" color="danger" expand="block" type="submit" margin="10px" (click)="logout()">LOGOUT</ion-button>
 </ion-content>

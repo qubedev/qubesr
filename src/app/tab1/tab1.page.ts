@@ -88,18 +88,22 @@ export class Tab1Page {
   }
 
   constructor(private http: HttpClient, public modalController: ModalController, private loadingController: LoadingController) {
-    this.reportType = JSON.parse(localStorage.getItem('qubelive_report'));
-    let tmpstore = JSON.parse(localStorage.getItem('qubelive_store'));
-    for (let i of tmpstore) {
-      i.status = true;
-    }
-    this.storeList = tmpstore;
-
-    this.getAllsales();
+    setTimeout(async() => {
+      this.reportType =await JSON.parse(localStorage.getItem('qubelive_report'));
+      let tmpstore = await JSON.parse(localStorage.getItem('qubelive_store'));
+      for (let i of tmpstore) {
+        i.status = true;
+      }
+      this.storeList = tmpstore;
+  
+      this.getAllsales();
+    },1000)
   }
 
-  ionViewDidEnter() {
+ionViewDidEnter() {
 
+   
+  
   }
 
   async getAllsales() {

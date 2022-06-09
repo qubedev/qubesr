@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Device } from '@awesome-cordova-plugins/device/ngx';
 import { NavController, ToastController } from '@ionic/angular';
+import { AuthGuardService } from '../services/auth.guard';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,7 @@ export class LoginPage implements OnInit {
   inputEmail = '';
   inputPass = '';
 
-  constructor(private http: HttpClient,private device: Device,private nav:NavController,private toastController:ToastController) { }
+  constructor(private auth:AuthGuardService,private http: HttpClient,private device: Device,private nav:NavController,private toastController:ToastController) { }
 
   ngOnInit() {
   }
@@ -34,6 +35,10 @@ export class LoginPage implements OnInit {
 
     this.http.post('https://qubelive.com.my/QubeSR/User/login.php', postData.toString(), httpOptions).subscribe((response: any) => {
       if(response.status == '1'){
+        response.email = this.inputEmail;
+        response.imei =this.device.uuid;
+        response.device = this.device.platform;
+        response.pass = this.inputPass;
         localStorage.setItem('qubelive_user',JSON.stringify(response))
         this.dlReportList(response.path);
         this.nav.navigateRoot('tabs');

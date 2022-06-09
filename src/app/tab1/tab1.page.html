@@ -56,10 +56,10 @@
   <ion-grid>
     <ion-row>
       <ion-col size="6">
-        <ion-card class="box4" (click)="changeType('OUTLET')" [ngStyle]="currentType == 'OUTLET' ? {border: '2px solid black'} : {border:none} " style="background-image: linear-gradient( 135deg, #ff656a 10%, #bf2025 100%);">
+        <ion-card class="box4" (click)="changeType('OUTLET')" [ngStyle]="currentType == 'OUTLET' ? {border: '2px solid black'} : {} " style="background-image: linear-gradient( 135deg, #ff656a 10%, #bf2025 100%);">
           <ion-label>
             <p>Daily Top Outlet</p>
-            <h1>MYR {{txt_topOutlet.Net}}</h1>
+            <h1>MYR <br>{{txt_topOutlet.Net}}</h1>
             <div>
               <ion-note>
                 <span>
@@ -72,10 +72,10 @@
         </ion-card>
       </ion-col>
       <ion-col size="6">
-        <ion-card class="box4" (click)="changeType('SKU')" [ngStyle]="currentType == 'SKU' ? {border: '2px solid black'} : {border:none} " style="background-image: linear-gradient( 135deg, #ffb648 10%, #DE4313 100%);">
+        <ion-card class="box4" (click)="changeType('SKU')" [ngStyle]="currentType == 'SKU' ? {border: '2px solid black'} : {} " style="background-image: linear-gradient( 135deg, #ffb648 10%, #DE4313 100%);">
           <ion-label>
             <p>Daily Top Sku</p>
-            <h1>MYR {{txt_topSku.Net}}</h1>
+            <h1>MYR <br>{{txt_topSku.Net}}</h1>
             <div>
               <ion-note>
                 <span>
@@ -88,10 +88,10 @@
         </ion-card>
       </ion-col>
       <ion-col size="6">
-        <ion-card class="box4" (click)="changeType('DEPT')" [ngStyle]="currentType == 'DEPT' ? {border: '2px solid black'} : {border:none} " style="background-image: linear-gradient( 135deg, #75c6ff 10%, #0396FF 100%);">
+        <ion-card class="box4" (click)="changeType('DEPT')" [ngStyle]="currentType == 'DEPT' ? {border: '2px solid black'} : {} " style="background-image: linear-gradient( 135deg, #75c6ff 10%, #0396FF 100%);">
           <ion-label>
             <p>Daily Top Dept</p>
-            <h1>MYR {{txt_topDept.Net}}</h1>
+            <h1>MYR <br>{{txt_topDept.Net}}</h1>
             <div>
               <ion-note>
                 <span>
@@ -104,10 +104,10 @@
         </ion-card>
       </ion-col>
       <ion-col size="6">
-        <ion-card class="box4" (click)="changeType('HOUR')" [ngStyle]="currentType == 'HOUR' ? {border: '2px solid black'} : {border:none} " style="background-image: linear-gradient( 135deg, #d181ff 10%, #9F44D3 100%);">
+        <ion-card class="box4" (click)="changeType('HOUR')" [ngStyle]="currentType == 'HOUR' ? {border: '2px solid black'} : {} " style="background-image: linear-gradient( 135deg, #d181ff 10%, #9F44D3 100%);">
           <ion-label>
             <p>Daily Top Hour</p>
-            <h1>MYR {{txt_topHour.Net}}</h1>
+            <h1>MYR <br>{{txt_topHour.Net}}</h1>
             <div>
               <ion-note>
                 <span>
